@@ -1,0 +1,43 @@
+<ng-template #loading>
+  <div class="alert alert-info text-center"> Wait a moment please </div>
+</ng-template>
+
+<div *ngIf="country; else loading">
+  <div class="row">
+    <div class="col-12">
+      <h2>Country: <strong>{{country.name.common}} </strong> </h2>
+      <hr>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-4">
+      <h3>Flag</h3>
+      <img [src]="country.flags.svg" [alt]="country.name.common" class="img-thumbnail">
+    </div>
+    <div class="col">
+      <h3>Details</h3>
+      <ul class="list-group">
+        <li class="list-group
+        -item">Capital: <strong>{{country.capital}}</strong></li>
+        <li class="list-group-item">Area: <strong>{{country.area | number}}</strong></li>
+        <li class="list-group-item">Population: <strong>{{country.population | number}}</strong></li>
+        <li class="list-group-item">Code: <strong>{{country.cca3}}</strong></li>
+        <li class="list-group-item">Region: <strong>{{country.region}}</strong></li>
+        <li class="list-group-item">Subregion: <strong>{{country.subregion}}</strong></li>
+        <li class="list-group-item">Borders: <strong>{{country.borders}}</strong></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="row mt-2">
+    <div class="col">
+      <h3>Translations</h3>
+      <div class="d-flex flex-wrap">
+        <span *ngFor="let translation of country.translations | keyvalue" class="badge bg-primary m-1">{{translation.key | uppercase}}: {{translation.value.common}}</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
