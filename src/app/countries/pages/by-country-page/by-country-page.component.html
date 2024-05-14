@@ -4,13 +4,15 @@
   <div class="col">
     <shared-search-box
       placeholder="By country"
-      (onValue)="searchCountry($event)"
+      [initialValue]="initialValue"
+      (onDebounce)="searchCountry($event)"
     ></shared-search-box>
   </div>
 </div>
 <div class="row">
   <div class="col">
     <hr>
+    <shared-loading-spinner *ngIf="isLoading" message="Searching"></shared-loading-spinner>
     <countries-table [countries]="countries"></countries-table>
   </div>
 </div>
